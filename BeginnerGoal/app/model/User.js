@@ -9,6 +9,6 @@ Ext.define('BeginnerGoal.model.User', {
     { name: 'lastname', type: 'string' },
     { name: 'company', type: 'string' },
     { name: 'email', type: 'string' },
-    { name: 'state', type: 'string' },
+    { name: 'state', type: 'string' }
   ]
 })
