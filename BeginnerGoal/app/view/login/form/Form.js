@@ -50,7 +50,7 @@ Ext.define('BeginnerGoal.view.login.form.Form', {
                         view.currentUserStore.add({ 'userId': userId });
                         console.log(userRecord);
                         view.layout.setActiveItem(1);
-                        form.destroy();
+                        form.reset();
                     }
                 }
             }
