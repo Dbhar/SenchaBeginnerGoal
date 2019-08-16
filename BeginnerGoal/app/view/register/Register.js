@@ -5,9 +5,11 @@ Ext.define('BeginnerGoal.view.register.Register', {
 		'BeginnerGoal.store.States',
 		'BeginnerGoal.model.User',
 		'BeginnerGoal.store.Users',
-		'BeginnerGoal.store.User'
+		'BeginnerGoal.store.User',
+		'BeginnerGoal.view.register.RegisterController'
 	],
 	extend: 'Ext.form.Panel',
+	controller: 'register',
 
 	itemId: 'registerform',
 	constructor: function () {
@@ -20,6 +22,7 @@ Ext.define('BeginnerGoal.view.register.Register', {
 	title: 'Register',
 
 	width: '100%',
+	buttonAlign: 'center',
 
 	fieldDefaults: {
 		labelAlign: 'side',
@@ -135,30 +138,7 @@ Ext.define('BeginnerGoal.view.register.Register', {
 	buttons: [
 		{
 			text: 'Register',
-			handler: function () {
-				var form = this.up('form'),
-					values = form.getValues(),
-					store = form.recordStore,
-					userModel,
-					userId = values.userId,
-					data,
-					oldRecord = form.userStore.findRecord('userId', userId);
-				console.dir(oldRecord);
-				console.log('Updating model instance with form data');
-				if(!form.isValid()) {
-					Ext.Msg.alert('Error', 'Invalid form');
-				}
-
-				if (oldRecord) {
-					Ext.Msg.alert('Error', 'User already registered');
-				} else {
-					form.userStore.add(values);
-					console.log('Model data after update');
-					console.dir(form.userStore);
-					data = Ext.Array.pluck(form.userStore.getRange(), 'data');
-					form.usersStore.add({ 'value': Ext.JSON.encode(data) });
-				}
-			}
+			handler: 'onRegisterButtonClick'
 		}
 	]
 });
