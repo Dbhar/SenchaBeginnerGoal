@@ -122,6 +122,7 @@ Ext.define('BeginnerGoal.view.register.Register', {
 				},
 				valueField: 'abbr',
 				displayField: 'state',
+				queryMode: 'local',
 				typeAhead: true,
 				typeAheadDelay: 1,
 				dataIndex: 'state'

@@ -11,17 +11,10 @@ Ext.define('BeginnerGoal.view.login.Login', {
         this.callParent();
     },
     listeners: {
-        activate: function() {
-            var userId = this.currentUserStore.getUserId(),
-                loginpage = this.up('#loginpage')  
-            if(userId != null)
-            {
-                loginpage.layout.setActiveItem(1);
-            }
-        }
+        activate: 'onActivate'
     },
     extend: 'Ext.form.Panel',
-    alias: 'widget.loginForm',
+    alias: 'widget.login',
     controller: 'login',
     itemId: 'loginform',
     title: 'Login',

@@ -9,7 +9,6 @@ Ext.define('BeginnerGoal.view.login.LoginController',{
             loginpage = form.up('#loginpage'),
             data,
             userRecord = form.userStore.findRecord('userId', userId);
-        console.dir(values);
         if (userRecord == null) {
             Ext.Msg.alert('Error', 'User does not exist');
         } else {
@@ -27,6 +26,15 @@ Ext.define('BeginnerGoal.view.login.LoginController',{
                 form.reset();
                 loginpage.layout.setActiveItem(1);
             }
+        }
+    },
+    onActivate: function() {
+        var view = this.getView(),
+            userId = view.currentUserStore.getUserId(),
+            loginpage = view.up('#loginpage')  
+        if(userId != null)
+        {
+            loginpage.layout.setActiveItem(1);
         }
     }
 })
