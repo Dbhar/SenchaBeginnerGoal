@@ -2,7 +2,7 @@ Ext.define('BeginnerGoal.store.Users',{
     extend: 'Ext.data.Store',
     storeId: 'UsersStore',
     model: 'BeginnerGoal.model.Users',
-    autoload: true,
+    autoLoad: true,
     listeners: {
         add: function(store) {
             store.sync();

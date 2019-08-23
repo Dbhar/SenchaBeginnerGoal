@@ -16,19 +16,30 @@ Ext.define('BeginnerGoal.view.main.Main', {
     ui: 'navigation',
     tabPosition: 'left',
     tabRotation: 0,
-    items: [{
-        title: 'Register',
-        iconCls: 'fa-user-plus',
-        // The following grid shares a store with the classic version's grid as well!
-        items: [{
+    items: [
+        {
+            title: 'Login',
+            iconCls: 'fa-user',
+            // The following grid shares a store with the classic version's grid as well!
+            items: [{
+                xtype: 'container',
+                itemId: 'loginpage',
+                layout: {
+                    type: 'card'
+                },
+                items: [
+                    {
+                        xtype: 'login'
+                    },
+                    {
+                        xtype: 'userProfile'
+                    }
+                ]
+            }]
+        },
+        {
+            title: 'Register',
+            iconCls: 'fa-user-plus',
             xtype: 'register'
         }]
-    },{
-        title: 'Login',
-        iconCls: 'fa-user',
-        // The following grid shares a store with the classic version's grid as well!
-        items: [{
-            xtype: 'login'
-        }]
-    }]
 });

@@ -1,29 +1,30 @@
 Ext.define('BeginnerGoal.view.login.Login', {
     requires: [
+        'BeginnerGoal.view.login.LoginController',
         'BeginnerGoal.model.User',
         'BeginnerGoal.store.Users',
         'BeginnerGoal.store.User'
     ],
-    extend: 'Ext.form.Panel',
-
-    itemId: 'registerform',
     constructor: function () {
         this.userStore = Ext.getStore('UserStore');
         this.currentUserStore = Ext.getStore('CurrentUser');
         this.callParent();
     },
-
+    listeners: {
+        activate: 'onActivate'
+    },
+    extend: 'Ext.form.Panel',
     alias: 'widget.login',
+    controller: 'login',
+    itemId: 'loginform',
     title: 'Login',
-
-    width: '100%',
-    
-
+    buttonAlign: 'center',
+    width: '50%',
     fieldDefaults: {
         labelAlign: 'side',
         labelStyle: 'font-weight: bold;',
-        margin: '15 15 15 15'
-
+        margin: '15 15 15 15',
+        width: '100%'
     },
     layout: {
         type: 'vbox'
@@ -39,31 +40,18 @@ Ext.define('BeginnerGoal.view.login.Login', {
             name: 'password',
             itemId: 'password',
             fieldLabel: 'Password',
-            inputType: 'password',
+            inputType: 'password'
+        },{
+            name: 'rememberme',
+            itemId: 'rememberme',
+            fieldLabel: 'Remember me',
+            xtype: 'checkboxfield'
         }],
     buttons: [
         {
             text: 'Login',
-            handler: function () {
-                var form = this.up('form'),
-                    values = form.getValues(),
-                    store = form.recordStore,
-                    userId = values.userId,
-                    data,
-                    userRecord = form.userStore.findRecord('userId', userId);
-                    console.dir(values);
-                if (userRecord == null) {
-                    Ext.Msg.alert('Error', 'User does not exist');
-                } else {
-                    var password = values.password;
-                    if (password != userRecord.get('password')) {
-                        Ext.Msg.alert('Error', 'Wrong password');
-                    } else {
-                        Ext.Msg.alert('Success', 'Login Successful');
-                        form.currentUserStore.setData({'userId': userId});
-                    }
-                }
-            }
+            formBind: true,
+            handler: 'onLoginButtonClick'
         }
     ]
-});
+})

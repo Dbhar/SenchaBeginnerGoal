@@ -16,13 +16,12 @@ Ext.define('BeginnerGoal.Application', {
     },
 
     stores: [
-       'BeginnerGoal.store.Users',
-       'BeginnerGoal.store.User',
-       'BeginnerGoal.store.CurrentUser' 
+        'BeginnerGoal.store.User',
+        'BeginnerGoal.store.CurrentUser',
+        'BeginnerGoal.store.Users'
     ],
 
     launch: function () {
-        Ext.getStore('UsersStore').load();
     },
 
     onAppUpdate: function () {
