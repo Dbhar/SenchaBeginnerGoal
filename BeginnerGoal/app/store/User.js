@@ -11,10 +11,8 @@ Ext.define('BeginnerGoal.store.User',{
     
     getUser: function(userId) {
         var user, userData;
-        console.log('userId ' + userId);
         if(userId != null) {
             user = this.findRecord('userId', userId);
-            console.dir(user);
         }
         userData = user.data;
         return userData;

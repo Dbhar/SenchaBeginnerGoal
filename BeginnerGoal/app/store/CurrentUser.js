@@ -6,7 +6,6 @@ Ext.define('BeginnerGoal.store.CurrentUser', {
     saveLocally: false,
     listeners: {
         add: function (store) {
-            console.log('Save Locally ' + store.saveLocally);
             if (store.saveLocally) {
                 store.sync();
             }
