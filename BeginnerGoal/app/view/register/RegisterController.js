@@ -7,7 +7,6 @@ Ext.define('BeginnerGoal.view.register.RegisterController', {
             store = form.recordStore,
             userModel,
             userId = values.userId,
-            data,
             oldRecord = form.userStore.findRecord('userId', userId);
         if (!form.isValid()) {
             Ext.Msg.alert('Error', 'Invalid form');
@@ -16,8 +15,6 @@ Ext.define('BeginnerGoal.view.register.RegisterController', {
             Ext.Msg.alert('Error', 'User already registered');
         } else {
             form.userStore.add(values);
-            data = Ext.Array.pluck(form.userStore.getRange(), 'data');
-            form.usersStore.add({ 'value': Ext.JSON.encode(data) });
             Ext.toast('Registration Successful');
             form.reset();
         }

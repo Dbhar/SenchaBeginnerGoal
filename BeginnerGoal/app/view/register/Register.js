@@ -4,7 +4,6 @@ Ext.define('BeginnerGoal.view.register.Register', {
 		'BeginnerGoal.model.State',
 		'BeginnerGoal.store.States',
 		'BeginnerGoal.model.User',
-		'BeginnerGoal.store.Users',
 		'BeginnerGoal.store.User',
 		'BeginnerGoal.view.register.RegisterController'
 	],
@@ -14,7 +13,6 @@ Ext.define('BeginnerGoal.view.register.Register', {
 	itemId: 'registerform',
 	constructor: function () {
 		this.userStore = Ext.getStore('UserStore');
-		this.usersStore = Ext.getStore('UsersStore');
 		this.callParent();
 	},
 

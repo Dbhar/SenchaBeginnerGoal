@@ -2,7 +2,6 @@ Ext.define('BeginnerGoal.view.login.Login', {
     requires: [
         'BeginnerGoal.view.login.LoginController',
         'BeginnerGoal.model.User',
-        'BeginnerGoal.store.Users',
         'BeginnerGoal.store.User'
     ],
     constructor: function () {

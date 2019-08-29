@@ -1,6 +1,5 @@
 Ext.define('BeginnerGoal.model.User', {
   extend: 'Ext.data.Model',
-  idProperty: 'userId',
   fields: [
     { name: 'userId', type: 'string', unique: 'true' },
     { name: 'password', type: 'string' },
@@ -10,6 +9,10 @@ Ext.define('BeginnerGoal.model.User', {
     { name: 'company', type: 'string' },
     { name: 'email', type: 'string' },
     { name: 'state', type: 'string' },
-    { name: 'birthdate', type: 'date'}
-  ]
+    { name: 'birthdate', type: 'date', dateFormat: 'd/m/Y'}
+  ],
+  proxy: {
+    type: 'localstorage',
+    id  : 'user'
+  }
 })
