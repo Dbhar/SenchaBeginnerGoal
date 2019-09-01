@@ -5,16 +5,18 @@ Ext.define('BeginnerGoal.view.register.Register', {
 		'BeginnerGoal.store.States',
 		'BeginnerGoal.model.User',
 		'BeginnerGoal.store.User',
-		'BeginnerGoal.view.register.RegisterController'
+		'BeginnerGoal.view.register.RegisterController',
+		'BeginnerGoal.view.register.RegisterModel'
+
 	],
 	extend: 'Ext.form.Panel',
 	controller: 'register',
+	viewModel: 'register',
+	listeners: {
+		afterrender: 'onAfterRender'
+	},
 
 	itemId: 'registerform',
-	constructor: function () {
-		this.userStore = Ext.getStore('UserStore');
-		this.callParent();
-	},
 
 	alias: 'widget.register',
 	title: 'Register',
@@ -52,6 +54,9 @@ Ext.define('BeginnerGoal.view.register.Register', {
 				name: 'userId',
 				fieldLabel: 'User Id',
 				dataIndex: 'userId',
+				bind: {
+					value: '{user.userId}'
+				},
 				allowBlank: false
 			}, {
 				name: 'password',
@@ -60,6 +65,9 @@ Ext.define('BeginnerGoal.view.register.Register', {
 				confirmPasswordField: 'confirmpassword',
 				inputType: 'password',
 				allowBlank: false,
+				bind: {
+					value: '{user.password}'
+				},
 				vtype: 'password',
 				dataIndex: 'password'
 			}, {
@@ -68,6 +76,9 @@ Ext.define('BeginnerGoal.view.register.Register', {
 				fieldLabel: 'Verify Password',
 				initialPasswordField: 'password',
 				inputType: 'password',
+				bind: {
+					value: '{user.confirmpassword}'
+				},
 				vtype: 'confirmpassword',
 				dataIndex: 'confirmpassword',
 				allowBlank: false
@@ -91,22 +102,34 @@ Ext.define('BeginnerGoal.view.register.Register', {
 				name: 'firstname',
 				itemId: 'firstname',
 				fieldLabel: 'First Name',
+				bind: {
+					value: '{user.firstname}'
+				},
 				dataIndex: 'firstname'
 			}, {
 				name: 'lastname',
 				itemId: 'lastname',
 				fieldLabel: 'Last Name',
+				bind: {
+					value: '{user.lastname}'
+				},
 				dataIndex: 'lastname'
 			}, {
 				name: 'company',
 				itemId: 'company',
 				fieldLabel: 'Company',
+				bind: {
+					value: '{user.company}'
+				},
 				dataIndex: 'company'
 			}, {
 				name: 'email',
 				itemId: 'email',
 				fieldLabel: 'Email',
 				allowBlank: false,
+				bind: {
+					value: '{user.email}'
+				},
 				vtype: 'email',
 				dataIndex: 'email'
 			}, {
@@ -121,6 +144,9 @@ Ext.define('BeginnerGoal.view.register.Register', {
 				valueField: 'abbr',
 				displayField: 'state',
 				queryMode: 'local',
+				bind: {
+					value: '{user.state}'
+				},
 				typeAhead: true,
 				typeAheadDelay: 1,
 				dataIndex: 'state'
@@ -130,6 +156,9 @@ Ext.define('BeginnerGoal.view.register.Register', {
 				fieldLabel: 'Date of Birth',
 				xtype: 'datefield',
 				format: 'd/m/Y',
+				bind: {
+					value: '{user.birthdate}'
+				},
 				invalidText: 'date should be in the format dd/mm/yyyy',
 				dataIndex: 'birthdate'
 			}]

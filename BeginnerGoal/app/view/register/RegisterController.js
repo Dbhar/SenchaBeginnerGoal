@@ -3,20 +3,23 @@ Ext.define('BeginnerGoal.view.register.RegisterController', {
     alias: 'controller.register',
     onRegisterButtonClick: function () {
         var form = this.getView(),
-            values = form.getValues(),
-            store = form.recordStore,
-            userModel,
-            userId = values.userId,
-            oldRecord = form.userStore.findRecord('userId', userId);
+            viewModel = this.getViewModel(),
+            store = viewModel.get('store'),
+            data = Ext.clone(viewModel.get('user')),
+            userId = data.userId,
+            oldRecord = store.findRecord('userId', userId);
         if (!form.isValid()) {
             Ext.Msg.alert('Error', 'Invalid form');
-
         } else if (oldRecord) {
             Ext.Msg.alert('Error', 'User already registered');
         } else {
-            form.userStore.add(values);
+            store.add(data);
             Ext.toast('Registration Successful');
             form.reset();
         }
+    },
+    onAfterRender: function() {
+        this.getViewModel().set('store', Ext.getStore('UserStore'));
+
     }
 })
