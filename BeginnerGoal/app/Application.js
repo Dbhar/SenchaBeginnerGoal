@@ -17,8 +17,7 @@ Ext.define('BeginnerGoal.Application', {
 
     stores: [
         'BeginnerGoal.store.User',
-        'BeginnerGoal.store.CurrentUser',
-        'BeginnerGoal.store.Users'
+        'BeginnerGoal.store.CurrentUser'
     ],
 
     launch: function () {

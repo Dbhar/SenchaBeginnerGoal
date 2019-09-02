@@ -1,21 +1,18 @@
 Ext.define('BeginnerGoal.view.login.Login', {
     requires: [
         'BeginnerGoal.view.login.LoginController',
+        'BeginnerGoal.view.login.LoginModel',
         'BeginnerGoal.model.User',
-        'BeginnerGoal.store.Users',
         'BeginnerGoal.store.User'
     ],
-    constructor: function () {
-        this.userStore = Ext.getStore('UserStore');
-        this.currentUserStore = Ext.getStore('CurrentUser');
-        this.callParent();
-    },
+
     listeners: {
         activate: 'onActivate'
     },
     extend: 'Ext.form.Panel',
     alias: 'widget.login',
     controller: 'login',
+    viewModel: 'login',
     itemId: 'loginform',
     title: 'Login',
     buttonAlign: 'center',
@@ -33,17 +30,26 @@ Ext.define('BeginnerGoal.view.login.Login', {
     items: [
         {
             name: 'userId',
+            bind: {
+                value: '{userId}'
+            },
             fieldLabel: 'User Id',
             dataIndex: 'userId',
             allowBlank: false
         }, {
             name: 'password',
             itemId: 'password',
+            bind: {
+                value: '{password}'
+            },
             fieldLabel: 'Password',
             inputType: 'password'
-        },{
+        }, {
             name: 'rememberme',
             itemId: 'rememberme',
+            bind: {
+                value: '{rememberme}'
+            },
             fieldLabel: 'Remember me',
             xtype: 'checkboxfield'
         }],
